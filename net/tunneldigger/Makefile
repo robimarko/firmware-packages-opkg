@@ -6,7 +6,7 @@ PKG_RELEASE:=1
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=git://github.com/wlanslovenija/tunneldigger.git
 PKG_SOURCE_DATE:=2018-06-25
-PKG_SOURCE_VERSION:=whatever
+PKG_SOURCE_VERSION:=18f365f329795400f4d7a101a6d45bc859100144
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
