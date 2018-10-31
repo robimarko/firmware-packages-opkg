@@ -1,0 +1,33 @@
+From c05ce95dce631341e2cea5e8e046f6beaf6f4b12 Mon Sep 17 00:00:00 2001
+From: Robert Marko <robimarko@gmail.com>
+Date: Wed, 31 Oct 2018 23:50:56 +0100
+Subject: [PATCH] tunneldigger-broker: Disable setup requirment
+
+These requirments are for full distributions.
+OpenWrt specifies them other way.
+
+Signed-off-by: Robert Marko <robimarko@gmail.com>
+---
+ broker/setup.py | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/broker/setup.py b/broker/setup.py
+index b150830..8e330f4 100644
+--- a/broker/setup.py
++++ b/broker/setup.py
+@@ -25,12 +25,8 @@ setup(
+     include_package_data=True,
+     zip_safe=False,
+     setup_requires=[
+-        'cffi>=1.4.1',
+     ],
+     install_requires=[
+-        'netfilter>=0.6.2',
+-        'six>=1.10.0',
+-        'cffi>=1.4.1',
+     ],
+     extras_require={},
+     cffi_modules=[
+-- 
+2.19.1
+
