@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-netfilter
-PKG_VERSION:=0.6.2
+PKG_VERSION:=0.6.4
 PKG_RELEASE:=1
 
 PKG_SOURCE:=netfilter-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://pypi.python.org/packages/source/n/netfilter/
-PKG_MD5SUM:=dc133fba329ba2862828c16a070d509e
+PKG_HASH:=92545dcd1dc65e850083d083118a3054fdb6566b3285b534199879b7a148d633
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/netfilter-$(PKG_VERSION)
 PKG_BUILD_DEPENDS:=python
