@@ -1,13 +1,16 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=tunneldigger-broker
+PKG_VERSION:=0.3.0
 PKG_RELEASE:=1
+PKG_REV:=$(PKG_SOURCE_VERSION)
 
-PKG_SOURCE_PROTO:=git
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://github.com/wlanslovenija/tunneldigger.git
-PKG_SOURCE_DATE:=2018-06-25
-PKG_SOURCE_VERSION:=18f365f329795400f4d7a101a6d45bc859100144
-PKG_MIRROR_HASH:=c437ca82a5f9da5ccade368dbb1fd407ffff1974e23e3e3e6b235d39e5c8dec4
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
+PKG_SOURCE_VERSION:=235e111fb8fa02c4687af7f695e21204d9d28fe6
+PKG_MIRROR_HASH:=88c2f854270213f973f787f49e59adcfcafd6cbd9a4b5f49ab8f62ea73583a82
 
 include $(INCLUDE_DIR)/package.mk
 include ../../../packages/lang/python/python-package.mk
