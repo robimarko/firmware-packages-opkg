@@ -1,0 +1,19 @@
+#!/bin/sh /etc/rc.common
+
+START=80
+
+CONFIG_FILE=/etc/config/eoip
+
+start() {
+	if [[ ! -f ${CONFIG_FILE} ]]; then
+		echo "EOIP config missing";
+	else
+		/usr/sbin/eoip \
+		"uci get eoip.@tunnel[0].ip_family" \
+		"uci get eoip.@tunnel[0].interface" \
+		"uci get eoip.@tunnel[0].local_ip" \
+		"uci get eoip.@tunnel[0].remote_ip" \
+		"uci get eoip.@tunnel[0].tunnel_id" \
+		fork
+	fi
+}
