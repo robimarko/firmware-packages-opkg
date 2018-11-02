@@ -3,17 +3,27 @@
 START=80
 
 CONFIG_FILE=/etc/config/eoip
+IP_FAMILY=$(uci get eoip.@tunnel[0].ip_family)
+INTERFACE=$(uci get eoip.@tunnel[0].interface)
+LOCAL_IP=$(uci get eoip.@tunnel[0].local_ip)
+REMOTE_IP=$(uci get eoip.@tunnel[0].remote_ip)
+TUNNEL_ID=$(uci get eoip.@tunnel[0].tunnel_id)
+BRIDGE_INTERFACE=$(uci get eoip.@tunnel[0].bridge)
 
 start() {
 	if [[ ! -f ${CONFIG_FILE} ]]; then
 		echo "EOIP config missing";
 	else
+		$(uci add_list network.$BRIDGE_INTERFACE.ifname=$INTERFACE )
 		/usr/sbin/eoip \
-		"uci get eoip.@tunnel[0].ip_family" \
-		"uci get eoip.@tunnel[0].interface" \
-		"uci get eoip.@tunnel[0].local_ip" \
-		"uci get eoip.@tunnel[0].remote_ip" \
-		"uci get eoip.@tunnel[0].tunnel_id" \
+		$IP_FAMILY \
+		$INTERFACE \
+		$LOCAL_IP \
+		$REMOTE_ip \
+		$TUNNEL_ID \
 		fork
+	fi
+	if [ $(uci get eoip.@tunnel[0].custom_route | wc -c) -ne 0 ]; then
+		$(uci get eoip.@tunnel[0].custom_route)
 	fi
 }
