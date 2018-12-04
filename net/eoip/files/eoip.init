@@ -26,7 +26,7 @@ start() {
                 mtu "$MTU" \
                 fork
 
-                /etc/init.d/network restart
+                /etc/init.d/network reload
         fi
         if [ $(uci get eoip.@tunnel[0].custom_route | wc -c) -ne 0 ]; then
                 $(uci get eoip.@tunnel[0].custom_route)
