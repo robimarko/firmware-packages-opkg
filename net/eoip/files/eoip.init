@@ -9,6 +9,7 @@ LOCAL_IP=$(uci get eoip.@tunnel[0].local_ip)
 REMOTE_IP=$(uci get eoip.@tunnel[0].remote_ip)
 TUNNEL_ID=$(uci get eoip.@tunnel[0].tunnel_id)
 BRIDGE_INTERFACE=$(uci get eoip.@tunnel[0].bridge)
+MTU=$(uci get eoip.@tunnel[0].mtu)
 
 start() {
         if [[ ! -f ${CONFIG_FILE} ]]; then
@@ -22,6 +23,7 @@ start() {
                 remote "$REMOTE_IP" \
                 local "$LOCAL_IP" \
                 id "$TUNNEL_ID" \
+                mtu "$MTU" \
                 fork
 
                 /etc/init.d/network restart
