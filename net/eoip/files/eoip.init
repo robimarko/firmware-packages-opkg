@@ -15,8 +15,11 @@ start() {
         if [[ ! -f ${CONFIG_FILE} ]]; then
                 echo "EOIP config missing";
         else
-                $(uci add_list network.$BRIDGE_INTERFACE.ifname=$INTERFACE )
-                uci commit
+                if [ $(uci add_list network.$BRIDGE_INTERFACE.ifname=$INTERFACE) != "uci: Entry not found" ]; then
+                        $(uci add_list network.$BRIDGE_INTERFACE.ifname=$INTERFACE)
+                        uci commit
+                fi
+
                 /usr/sbin/eoip \
                 "$IP_FAMILY" \
                 "$INTERFACE" \
@@ -31,4 +34,8 @@ start() {
         if [ $(uci get eoip.@tunnel[0].custom_route | wc -c) -ne 0 ]; then
                 $(uci get eoip.@tunnel[0].custom_route)
         fi
+}
+
+stop() {
+        killall eoip
 }
