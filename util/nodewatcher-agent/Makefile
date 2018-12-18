@@ -1,16 +1,16 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=nodewatcher-agent
-PKG_VERSION:=2017-03-19
+PKG_VERSION:=2018-12-19
 PKG_RELEASE=$(PKG_SOURCE_VERSION)
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/wlanslovenija/nodewatcher-agent.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)
-PKG_SOURCE_VERSION:=e36eba14ad4115172180f457d195c773fda59401
+PKG_SOURCE_VERSION:=6f05ba12908bbd5405792142b447f45ee120955a
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.xz
 PKG_MAINTAINER:=Jernej Kos <jernej@kos.mx>
-PKG_MIRROR_HASH:=8d136d1a352f776532ea8893bb07edc0dfdc62b2acb22ea7bfbe90235b118a19
+PKG_MIRROR_HASH:=whatever
 CMAKE_INSTALL:=1
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
@@ -90,4 +90,5 @@ $(eval $(call BuildModule,clients,,Provides client info.))
 $(eval $(call BuildModule,http_push,libcurl,Provides HTTP push support.))
 $(eval $(call BuildModule,routing_babel,,Provides Babel routing info.))
 $(eval $(call BuildModule,routing_olsr,,Provides OLSR routing info.))
+$(eval $(call BuildModule,meshpoint,,Provides sensor info for Meshpoint.))
 
