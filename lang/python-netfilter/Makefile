@@ -19,7 +19,7 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/netfilter-$(PKG_VERSION)
 PKG_BUILD_DEPENDS:=python
 
 include $(INCLUDE_DIR)/package.mk
-include ../../../packages/lang/python/python-package.mk
+$(call include_mk, python-package.mk)
 
 define Package/python-netfilter
   SUBMENU:=Python
