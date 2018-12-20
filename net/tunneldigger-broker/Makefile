@@ -10,7 +10,7 @@ PKG_SOURCE_VERSION:=18f365f329795400f4d7a101a6d45bc859100144
 PKG_MIRROR_HASH:=c437ca82a5f9da5ccade368dbb1fd407ffff1974e23e3e3e6b235d39e5c8dec4
 
 include $(INCLUDE_DIR)/package.mk
-include ../../../packages/lang/python/python-package.mk
+$(call include_mk, python-package.mk)
 
 define Package/tunneldigger-broker
   SECTION:=net
